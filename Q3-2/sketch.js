@@ -24,7 +24,11 @@ function draw(){
   fill(64, 192, 64);
   rect(0, groundY, width, height - groundY);
 
-  // BLANK[1] キャラクターの左右移動
+  // キーの処理（else ifにすると同時押しできなくなってしまうので要注意）
+ if(keyIsDown(LEFT_ARROW)){ x -= 5; }
+ if(keyIsDown(RIGHT_ARROW)){ x += 5; }
+ if(keyIsDown(RIGHT_ARROW)&& keyIsDown("D".charCodeAt(0))){ x+= 10; } // 文字キーの場合
+ if(keyIsDown(LEFT_ARROW) && keyIsDown("A".charCodeAt(0))){ x-= 10; } // BLANK[1] キャラクターの左右移動
 
   // BLANK[2] 重力とジャンプ
 
@@ -35,6 +39,19 @@ function draw(){
   // 位置を更新
   x += vx;
   y += vy;
+  vy += g;
+
+  
+  if(x < 0 || x > width){ vx = -1 * vx; }
+  if(y < 0 || y > height){ vy = -1 * vy; }
+  if(keyIsDown(" ".charCodeAt(0))){ 
+   if(y>groundY){ vy = -20; }}
+  
+  y = constrain(y, 0, groundY);
+
+
+
+  
 
   // キャラクターを描く
   fill(0);

@@ -14,10 +14,12 @@ function setup(){
   for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }
 
   // ここからが本番
+ for(let i = 0; i < scores.length; i++){
   fill(0);
   const dx = width / scores.length;
+  const h = height * scores[i] / 100;
+  const g = height * scores[i-1] / 100;
   let px, py; // 線を引くために一つ前の点を覚えておく変数
-  for(let i = 0; i < scores.length; i++){
-    // BLANK[1]
+  line((i-1) * dx , height - g,i * dx , height - h)  // BLANK[1]
   }
 }

@@ -48,7 +48,6 @@ function draw(){
   x += vx;
   y += vy;
   vy += g;
-
   
   if(x < 0 || x > width){ vx = -1 * vx; }
   if(y < 0 || y > height){ vy = -1 * vy; }
